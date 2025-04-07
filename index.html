@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片尺寸调整器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">图片尺寸调整器</h1>
+
+        <div class="mb-6">
+            <label for="imageUpload" class="block text-sm font-medium text-gray-700 mb-2">选择图片:</label>
+            <div class="flex items-center justify-center w-full">
+                <label for="imageUpload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <span class="lucide lucide-upload text-4xl text-gray-400 mb-3"></span>
+                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">点击上传</span> 或拖拽文件到此</p>
+                        <p class="text-xs text-gray-500">支持 PNG, JPG, GIF, WEBP 等格式</p>
+                    </div>
+                    <input id="imageUpload" type="file" class="hidden" accept="image/*">
+                </label>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message-box">
+            <span id="messageIcon" class="lucide text-xl"></span>
+            <span id="messageText"></span>
+        </div>
+
+        <div id="resultArea" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
+            <div class="border p-4 rounded-md bg-gray-50">
+                <h2 class="text-lg font-semibold mb-2 text-gray-700 flex items-center gap-2">
+                    <span class="lucide lucide-image text-blue-500"></span>
+                    原图预览
+                </h2>
+                <img id="originalImage" src="#" alt="Original Image Preview" class="max-w-full h-auto rounded-md mx-auto" style="display: none;">
+                 <div id="originalPlaceholder" class="w-full h-48 bg-gray-200 rounded-md flex items-center justify-center text-gray-400">
+                    等待上传图片...
+                </div>
+            </div>
+
+            <div class="border p-4 rounded-md bg-gray-50">
+                <h2 class="text-lg font-semibold mb-2 text-gray-700">调整后尺寸</h2>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">16x16 像素:</p>
+                        <canvas id="canvas16" width="16" height="16"></canvas>
+                        <a id="download16" href="#" download="icon-16x16.png" class="download-link">
+                            <span class="lucide lucide-download"></span>下载
+                        </a>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">48x48 像素:</p>
+                        <canvas id="canvas48" width="48" height="48"></canvas>
+                        <a id="download48" href="#" download="icon-48x48.png" class="download-link">
+                            <span class="lucide lucide-download"></span>下载
+                        </a>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">128x128 像素:</p>
+                        <canvas id="canvas128" width="128" height="128"></canvas>
+                        <a id="download128" href="#" download="icon-128x128.png" class="download-link">
+                            <span class="lucide lucide-download"></span>下载
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
